@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace PeibinLaravel\Nacos;
 
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Container\Container;
+
 class ApplicationFactory
 {
-    public function __invoke(): Application
+    public function __invoke(Container $container): Application
     {
-        $config = config('nacos', []);
+        $config = $container->get(Repository::class)->get('nacos', []);
         if (!empty($config['uri'])) {
             $baseUri = $config['uri'];
         } else {

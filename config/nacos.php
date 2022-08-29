@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // nacos server url like https://nacos.hyperf.io, Priority is higher than host:port
+    // nacos server url like https://nacos.io, Priority is higher than host:port
     // 'uri' => '',
     // The nacos host info
     'host'     => '127.0.0.1',

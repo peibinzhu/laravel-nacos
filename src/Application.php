@@ -30,11 +30,8 @@ class Application
 
     protected array $providers = [];
 
-    protected Config $config;
-
-    public function __construct(Config $config)
+    public function __construct(protected Config $config)
     {
-        $this->config = $config;
     }
 
     public function __get($name)

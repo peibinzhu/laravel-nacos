@@ -10,22 +10,17 @@ use PeibinLaravel\Nacos\Exception\RequestException;
 use PeibinLaravel\Nacos\Providers\AccessToken;
 use PeibinLaravel\Utils\Codec\Json;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 
 class AbstractProvider
 {
     use AccessToken;
 
-    protected Config $config;
-
-    protected Application $app;
-
-    public function __construct(Application $app, Config $config)
+    public function __construct(protected Application $app, protected Config $config)
     {
-        $this->app = $app;
-        $this->config = $config;
     }
 
-    public function request($method, $uri, array $options = []): ResponseInterface
+    public function request(string $method, string | UriInterface $uri, array $options = [])
     {
         $token = $this->getAccessToken();
         $token && $options[RequestOptions::QUERY]['accessToken'] = $token;
