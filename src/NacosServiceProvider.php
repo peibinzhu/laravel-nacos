@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace PeibinLaravel\Nacos;
 
 use Illuminate\Support\ServiceProvider;
-use PeibinLaravel\Utils\Providers\RegisterProviderConfig;
+use PeibinLaravel\ProviderConfig\Contracts\ProviderConfigInterface;
 
-class NacosServiceProvider extends ServiceProvider
+class NacosServiceProvider extends ServiceProvider implements ProviderConfigInterface
 {
-    use RegisterProviderConfig;
-
     public function __invoke(): array
     {
         return [

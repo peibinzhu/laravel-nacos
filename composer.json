@@ -16,7 +16,8 @@
   "require": {
     "php": ">=8.0",
     "guzzlehttp/guzzle": "^7.2",
-    "peibin/laravel-utils": "^1.2"
+    "peibin/laravel-provider-config": "^1.0",
+    "peibin/laravel-utils": ">=1.2"
   },
   "autoload": {
     "psr-4": {
