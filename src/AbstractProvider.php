@@ -6,9 +6,9 @@ namespace PeibinLaravel\Nacos;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use PeibinLaravel\Nacos\Exception\RequestException;
+use PeibinLaravel\Codec\Json;
+use PeibinLaravel\Nacos\Exceptions\RequestException;
 use PeibinLaravel\Nacos\Providers\AccessToken;
-use PeibinLaravel\Utils\Codec\Json;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 

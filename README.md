@@ -1,4 +1,4 @@
-Laravel 配置中心组件
+Laravel nacos组件
 =======
 
 ## 安装

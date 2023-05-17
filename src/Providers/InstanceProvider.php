@@ -6,8 +6,8 @@ namespace PeibinLaravel\Nacos\Providers;
 
 use GuzzleHttp\RequestOptions;
 use JetBrains\PhpStorm\ArrayShape;
+use PeibinLaravel\Codec\Json;
 use PeibinLaravel\Nacos\AbstractProvider;
-use PeibinLaravel\Utils\Codec\Json;
 use Psr\Http\Message\ResponseInterface;
 
 class InstanceProvider extends AbstractProvider

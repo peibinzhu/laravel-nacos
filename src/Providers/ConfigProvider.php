@@ -6,11 +6,13 @@ namespace PeibinLaravel\Nacos\Providers;
 
 use GuzzleHttp\RequestOptions;
 use PeibinLaravel\Nacos\AbstractProvider;
-use PeibinLaravel\Nacos\Utils\Encode;
 use Psr\Http\Message\ResponseInterface;
 
 class ConfigProvider extends AbstractProvider
 {
+    public const WORD_SEPARATOR = "\x02";
+
+    public const LINE_SEPARATOR = "\x01";
     /**
      * A request to listen for data packets.
      * Format: dataId^group^2contentMD5^tenant^1 or dataId^group^2contentMD5^1.
@@ -39,21 +41,21 @@ class ConfigProvider extends AbstractProvider
         $configs = sprintf(
             self::LISTENING_CONFIGS_FORMAT,
             $dataId,
-            Encode::twoEncode(),
+            self::WORD_SEPARATOR,
             $group,
-            Encode::twoEncode(),
+            self::WORD_SEPARATOR,
             $contentMD5,
-            Encode::twoEncode(),
+            self::WORD_SEPARATOR,
             $tenant,
-            Encode::oneEncode()
+            self::LINE_SEPARATOR
         );
         return $this->request('POST', '/nacos/v1/cs/configs/listener', [
-            RequestOptions::HEADERS     => [
+            RequestOptions::HEADERS => [
                 'Long-Pulling-Timeout' => 1000 * 30,
             ],
-            RequestOptions::FORM_PARAMS => $this->filter([
+            RequestOptions::QUERY   => [
                 'Listening-Configs' => $configs,
-            ]),
+            ],
         ]);
     }
 
